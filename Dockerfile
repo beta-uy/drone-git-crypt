@@ -1,10 +1,10 @@
-FROM debian:stable-slim
+FROM alpine/git
 
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    git-crypt \
- && rm -rf /var/lib/apt/lists/*
+RUN apk add --no-cache git-crypt
 
 ADD script.sh /bin/
 RUN chmod +x /bin/script.sh
+
+ENTRYPOINT []
 CMD ["/bin/script.sh"]
 
